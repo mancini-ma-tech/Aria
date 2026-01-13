@@ -1,65 +1,37 @@
-🌌 Aria: AI Vital Signs Monitor
-Aria è un'intelligenza artificiale avanzata dedicata al monitoraggio e all'analisi dei parametri vitali in tempo reale. Il progetto mira a fornire una visione olistica del benessere fisico, identificando pattern biometrici e fornendo feedback personalizzati.
-📋 Indice
- * Panoramica
- * Funzionalità
- * Parametri Monitorati
- * Setup del Progetto
-🔍 Panoramica
-Aria non è solo un raccoglitore di dati, ma un assistente intelligente che impara dalle tue abitudini fisiologiche. Utilizza algoritmi di analisi per distinguere tra normali variazioni quotidiane e potenziali anomalie legate a stress o affaticamento.
-✨ Funzionalità
- * Analisi in Tempo Reale: Elaborazione costante dei flussi di dati biometrici.
- * Rilevamento Stress: Algoritmo basato sulla variabilità della frequenza cardiaca (HRV).
- * Report Storici: Generazione di grafici sull'andamento della salute nel tempo.
- * Sistema di Alert: Notifiche immediate in caso di superamento delle soglie di sicurezza.
-🩺 Parametri Monitorati
-| Parametro | Descrizione | Unità |
-|---|---|---|
-| BPM | Frequenza cardiaca e battiti a riposo. | bpm |
-| HRV | Variabilità cardiaca (indicatore di stress). | ms |
-| SpO2 | Livello di ossigenazione del sangue. | % |
-| Attività | Monitoraggio del movimento e passi. | count |
-🛠 Setup del Progetto
-# Clona il repository
-git clone https://github.com/tuo-username/aria-ai.git
+# 🌌 ARIA: AI Vital Signs Monitor
 
-# Installa i requisiti
-pip install -r requirements.txt
+![Version](https://img.shields.io/badge/version-1.0.0-blue) ![Python](https://img.shields.io/badge/Python-3.9%2B-green) ![Status](https://img.shields.io/badge/status-Active-success)
 
-# Avvia Aria
-python aria_main.py
+> *"Il monitoraggio intelligente per il tuo benessere psicofisico."*
 
-Option 2: English Version
-🌌 Aria: AI Vital Signs Monitor
-Aria is an advanced AI system designed for real-time monitoring and analysis of vital signs. It focuses on biometric data processing to provide personalized health insights and stress management feedback.
-📋 Table of Contents
- * Overview
- * Core Features
- * Monitored Metrics
- * Getting Started
-🔍 Overview
-Aria acts as an intelligent health companion. By leveraging machine learning, it learns your unique physiological baselines to detect anomalies, track fitness progress, and help manage daily stress levels effectively.
-✨ Core Features
- * Real-time Analytics: Continuous processing of incoming biometric streams.
- * Stress Intelligence: HRV-based algorithms to determine physical and mental strain.
- * Predictive Trends: Identifies long-term health patterns using historical data.
- * Smart Notifications: Customizable alerts for critical biometric thresholds.
-🩺 Monitored Metrics
-| Metric | Description | Unit |
-|---|---|---|
-| Heart Rate | Beats per minute and resting heart rate. | bpm |
-| HRV | Heart Rate Variability (stress indicator). | ms |
-| SpO2 | Blood oxygen saturation levels. | % |
-| Sleep Quality | Analysis of sleep cycles and duration. | score/h |
-🛠 Getting Started
-# Clone the repository
-git clone https://github.com/your-username/aria-ai.git
+**Aria** è un'intelligenza artificiale avanzata progettata per il **monitoraggio continuo** e l'analisi profonda dei parametri vitali. Il sistema non si limita a raccogliere dati: apprende i tuoi standard fisiologici per identificare **pattern di stress**, **anomalie** e **miglioramenti** nel tempo.
 
-# Install dependencies
-pip install -r requirements.txt
+---
 
-# Run Aria
-python aria_main.py
+## 📋 INDICE
+* [📌 Panoramica](#-panoramica)
+* [✨ Caratteristiche Principali](#-caratteristiche-principali)
+* [🩺 Parametri Monitorati](#-parametri-monitorati)
+* [💻 Stack Tecnologico](#-stack-tecnologico)
+* [🚀 Installazione Rapida](#-installazione-rapida)
 
-Prossimo passo consigliato
-Vuoi che generi anche il file LICENSE (per proteggere il tuo codice) o un file .gitignore specifico per evitare di caricare file inutili su GitHub?
+---
+
+## 📌 PANORAMICA
+L'obiettivo di **Aria** è fornire una visione *olistica* della salute. Attraverso algoritmi di **Machine Learning**, Aria elabora i segnali biometrici in tempo reale, fornendo un feedback immediato su:
+1.  **Stato di calma/agitazione** (basato su HRV).
+2.  **Qualità del recupero** fisico.
+3.  **Allerte precoci** su potenziali malesseri.
+
+---
+
+## ✨ CARATTERISTICHE PRINCIPALI
+
+### ⚡ Analisi Real-Time
+Elaborazione istantanea dei flussi di dati provenienti da sensori esterni (es. Smartwatch, fasce cardio).
+
+### 🧠 Motore Predittivo
+Utilizza modelli statistici per *prevedere* picchi di stress basandosi sullo storico delle tue rilevazioni.
+
+### 🔔 Smart Alert System
+Notifiche **intelligenti** e **personalizzabili** quando i parametri escono dai range di sicurezza stabiliti (es. *"Attenzione: Batt
