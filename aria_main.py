@@ -1,65 +1,90 @@
 import time
 import random
+import csv
+import os  # Necessario per gestire i file nel sistema operativo
 from datetime import datetime
 
 # --- CONFIGURAZIONE ---
-# Soglie di base (in un sistema reale, queste sarebbero adattive/apprese dall'AI)
-SOGLIA_BPM_ALTO = 110       # Battiti per minuto
-SOGLIA_HRV_BASSO = 20       # Heart Rate Variability (ms) - Basso = Stress
-SOGLIA_HRV_OTTIMO = 60      # Alto = Relax/Recupero
+SOGLIA_BPM_ALTO = 110
+SOGLIA_HRV_BASSO = 20
+SOGLIA_HRV_OTTIMO = 60
+FILE_LOG = "aria_history.csv" # Nome del file dove salveremo i dati
 
 class BiosensorSimulator:
-    """
-    Simula un dispositivo indossabile (es. Smartwatch).
-    Genera dati casuali realistici per testare il sistema.
-    """
+    """Genera dati casuali per testare il sistema."""
     def get_readings(self):
-        # Simuliamo: BPM (Battito) e HRV (Variabilità del battito)
-        # Nota: In situazioni di stress, il BPM sale e l'HRV scende.
         return {
-            "timestamp": datetime.now().strftime("%H:%M:%S"),
-            "bpm": random.randint(55, 120),    # Range realistico a riposo/attività leggera
-            "hrv": random.randint(10, 100)     # Range in millisecondi
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), # Formato completo data+ora
+            "bpm": random.randint(55, 120),
+            "hrv": random.randint(10, 100)
         }
 
+class DataLogger:
+    """
+    MODULO NUOVO: Gestisce la persistenza dei dati.
+    Salva le letture su un file CSV (compatibile con Excel).
+    """
+    def __init__(self, filename):
+        self.filename = filename
+        self.initialize_file()
+
+    def initialize_file(self):
+        # Se il file non esiste, lo creiamo e scriviamo l'intestazione (le colonne)
+        if not os.path.exists(self.filename):
+            with open(self.filename, mode='w', newline='', encoding='utf-8') as file:
+                writer = csv.writer(file)
+                writer.writerow(["Timestamp", "BPM", "HRV", "Stato Rilevato"]) # Intestazioni
+            print(f"📁 Creato nuovo file di log: {self.filename}")
+
+    def log_data(self, data, status):
+        # Apre il file in modalità 'append' (a) per aggiungere righe senza cancellare le vecchie
+        with open(self.filename, mode='a', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([data['timestamp'], data['bpm'], data['hrv'], status])
+
 class AlertSystem:
-    """
-    Gestisce le notifiche all'utente.
-    """
+    """Gestisce le notifiche a schermo."""
     def send_alert(self, level, message):
         icons = {"INFO": "ℹ️", "WARNING": "⚠️", "CRITICAL": "🚨"}
         print(f"\n{icons.get(level, '')} [{level}] {message}")
 
 class AriaEngine:
-    """
-    Il cuore dell'intelligenza artificiale.
-    Analizza i dati grezzi e cerca pattern.
-    """
+    """Il cervello che analizza e coordina il salvataggio."""
     def __init__(self):
         self.alert_system = AlertSystem()
-        self.history = [] # Memoria a breve termine
+        self.logger = DataLogger(FILE_LOG) # Inizializza il logger
 
     def analyze(self, data):
         bpm = data['bpm']
         hrv = data['hrv']
+        status = "Normale"
         
-        # Analisi Semplice (Rule-based)
-        status = "Neutro"
-        
-        # 1. Controllo Battito Cardiaco (Anomalie immediate)
+        # Logica di Analisi
         if bpm > SOGLIA_BPM_ALTO:
-            self.alert_system.send_alert("CRITICAL", f"Attenzione: Battito cardiaco elevato rilevato ({bpm} BPM).")
-            status = "Agitazione Fisica"
-        
-        # 2. Controllo Stress basato su HRV (Motore Predittivo Semplificato)
+            self.alert_system.send_alert("CRITICAL", f"Battito elevato ({bpm} BPM).")
+            status = "Agitazione"
         elif hrv < SOGLIA_HRV_BASSO:
-            self.alert_system.send_alert("WARNING", f"Livello di Stress in aumento (HRV: {hrv}ms). Consigliata pausa respiratoria.")
-            status = "Stress Mentale"
-            
-        # 3. Rilevamento Recupero
+            self.alert_system.send_alert("WARNING", f"Stress in aumento (HRV: {hrv}).")
+            status = "Stress"
         elif hrv > SOGLIA_HRV_OTTIMO and bpm < 70:
-            status = "Stato di Calma Profonda"
-            print(f"✨ Aria: Ottimo recupero rilevato. I parametri sono ideali.")
+            status = "Relax"
 
-        # Log per il debug
-        print(f
+        # Output a schermo
+        print(f"[{data['timestamp']}] ❤️ {bpm} | ⚡ {hrv} | Stato: {status}")
+        
+        # SALVATAGGIO: Scriviamo nel "diario" di Aria
+        self.logger.log_data(data, status)
+
+# --- MAIN ---
+def main():
+    print("🌌 ARIA System v1.1 - Logging Attivo")
+    print(f"I dati verranno salvati in: {os.path.abspath(FILE_LOG)}\n")
+    
+    sensor = BiosensorSimulator()
+    aria = AriaEngine()
+
+    try:
+        while True:
+            data = sensor.get_readings()
+            aria.analyze(data)
+            time.
