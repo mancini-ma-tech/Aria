@@ -35,3 +35,74 @@ Utilizza modelli statistici per *prevedere* picchi di stress basandosi sullo sto
 
 ### 🔔 Smart Alert System
 Notifiche **intelligenti** e **personalizzabili** quando i parametri escono dai range di sicurezza stabiliti (es. *"Attenzione: Batt
+
+
+---
+
+### 🇺🇸 English Version
+
+```markdown
+# 🌌 ARIA: AI Vital Signs Monitor
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue) ![Python](https://img.shields.io/badge/Python-3.9%2B-green) ![Status](https://img.shields.io/badge/status-Active-success)
+
+> *"Intelligent monitoring for your psychophysical well-being."*
+
+**Aria** is an advanced Artificial Intelligence designed for **continuous monitoring** and deep analysis of vital signs. The system goes beyond data collection: it learns your physiological baselines to identify **stress patterns**, **anomalies**, and **health improvements** over time.
+
+---
+
+## 📋 TABLE OF CONTENTS
+* [📌 Overview](#-overview)
+* [✨ Core Features](#-core-features)
+* [🩺 Monitored Metrics](#-monitored-metrics)
+* [💻 Tech Stack](#-tech-stack)
+* [🚀 Quick Start](#-quick-start)
+
+---
+
+## 📌 OVERVIEW
+**Aria** aims to provide a *holistic* view of your health. Through **Machine Learning** algorithms, Aria processes biometric signals in real-time, providing immediate feedback on:
+1.  **Calm/Agitation states** (HRV-based).
+2.  **Physical recovery** quality.
+3.  **Early warnings** for potential health issues.
+
+---
+
+## ✨ CORE FEATURES
+
+### ⚡ Real-Time Analytics
+Instant processing of data streams from external sensors (e.g., Smartwatches, Chest straps).
+
+### 🧠 Predictive Engine
+Uses statistical models to *predict* stress spikes based on your historical data patterns.
+
+### 🔔 Smart Alert System
+**Intelligent** and **customizable** notifications triggered when metrics exceed safety thresholds (e.g., *"Warning: High Resting Heart Rate detected"*).
+
+---
+
+## 🩺 MONITORED METRICS
+
+| Icon | Metric | Description | Unit |
+| :---: | :--- | :--- | :--- |
+| ❤️ | **Heart Rate** | Resting and active BPM monitoring. | `bpm` |
+| 📉 | **HRV (Variability)** | Key indicator for **stress** and ANS balance. | `ms` |
+| 🩸 | **SpO2** | Blood oxygen saturation levels. | `%` |
+| 🌙 | **Sleep Analysis** | Sleep cycles quality and duration. | `h/score` |
+
+---
+
+## 💻 TECH STACK
+* **Core:** `Python 3.9+`
+* **Data Analysis:** `Pandas`, `NumPy`
+* **Machine Learning:** `Scikit-learn`, `TensorFlow` (optional)
+* **Visualization:** `Matplotlib`, `Plotly`
+
+---
+
+## 🚀 QUICK START
+
+**1. Clone the repository**
+```bash
+git clone [https://github.com/your-username/aria-ai.git](https://github.com/your-username/aria-ai.git)
