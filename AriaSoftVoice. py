@@ -1,0 +1,28 @@
+import random
+
+class AlertSystem:
+    """
+    Gestisce le notifiche con un tono fluido, dolce e calmante.
+    """
+    def __init__(self):
+        # Playlist di messaggi dolci per non essere ripetitivi
+        self.sweet_alerts = [
+            "Sebastian, facciamo un respiro profondo insieme? Il tuo cuore sta correndo un pochino.",
+            "Ehi, prenditi un momento per te. Sento che c'è un po' di tensione, prova a rilassare le spalle.",
+            "Tutto va bene, ma il tuo corpo ti sta chiedendo una piccola pausa. Che ne dici di un bicchiere d'acqua?",
+            "Ti senti un po' agitato? Prova a chiudere gli occhi per dieci secondi, io resto qui con te."
+        ]
+
+    def send_alert(self, level, data_value):
+        if level == "CRITICAL":
+            # Sceglie un messaggio casuale dalla lista
+            messaggio = random.choice(self.sweet_alerts)
+            print(f"\n✨ [ARIA]: \"{messaggio}\"")
+            print(f"   (Rilevato Battito: {data_value} BPM)")
+            
+        elif level == "WARNING":
+            print(f"\n✨ [ARIA]: \"Sento un po' di stanchezza nel tuo battito. Non sforzarti troppo ora, Sebastian.\"")
+            print(f"   (HRV basso: {data_value}ms)")
+
+# Esempio di utilizzo nel motore:
+# alert_system.send_alert("CRITICAL", 115)
